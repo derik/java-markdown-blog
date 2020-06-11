@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+<head>
+  <title>DerikLima.com Blog</title>
+</head>
+<body>
+
+<div layout:fragment="main-body">
+  <div class="container written-content">
+    <div class="row mt-1 justify-content-center">
+      <div class="col-md-10">
+        <h1 class="mt-5 font-weight-bold text-center">Welcome to DerikLima.com Blog</h1>
+        <p class="mt-3 mb-4 text-center">
+          This is just a very simple blogging platform written in Java and with Markdown support.
+        </p>
+      </div>
+    </div>
+
+    <hr>
+
+    <div class="articles px-5">
+
+      <div class="article my-5" th:each="post : ${posts}">
+        <div class="article-title text-center mb-2">
+          <h2>
+            <a th:href="@{'/blog/' + ${post.getHandle()}}"
+               class="text-decoration-none primary-color"
+               th:text="${post.getTitle()}">Article
+              Title</a>
+          </h2>
+        </div>
+        <div class="article-description">
+          <a th:href="@{'/blog/' + ${post.getHandle()}}"
+             class="text-decoration-none primary-color lead"
+             th:text="${post.getDescription()}">
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab consequatur est magnam
+            optio possimus qui quia quis repudiandae, sit vel.
+          </a>
+        </div>
+        <div class="d-flex justify-content-between">
+          <div class="article-tags">
+            <span class="badge badge-secondary mr-2" th:each="tag : ${post.getTags()}">[[${tag.getName()}]]</span>
+          </div>
+          <div class="article-created"><span class="time text-monospace"
+                                             th:text="${post.getCreatedAt()}">March 30, 2020</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<th:block layout:fragment="script">
+  <script>
+    moment.locale("en-us");
+    $(".time").each(function () {
+      $(this).text(moment($(this).text()).calendar());
+    });
+  </script>
+</th:block>
+</body>
+</html>

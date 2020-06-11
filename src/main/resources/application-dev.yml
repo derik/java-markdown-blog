@@ -1,0 +1,28 @@
+server:
+  error.whitelabel.enabled: false
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:test;MODE=PostgreSQL;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    schema: classpath:db/h2/schema.sql
+    data: classpath:db/h2/data.sql
+  jpa:
+    hibernate.ddl-auto: none
+    show-sql: true
+    open-in-view: true
+  security:
+    user:
+      name: user
+      password: ${USER_PASSWORD}
+      roles: editor
+  messages:
+    basename: messages/messages
+  thymeleaf:
+    cache: false
+
+social:
+  links:
+    linkedin: https://www.linkedin.com
+    github: https://www.github.com
+    twitter: https://www.twitter.com

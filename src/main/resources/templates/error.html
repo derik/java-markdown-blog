@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+<head>
+  <title>Oops... | DerikLima.com Blog</title>
+
+  <style>
+    .error-div {
+      min-height: 84vh;
+    }
+  </style>
+</head>
+<body>
+
+<div layout:fragment="main-body" class="d-flex align-items-center error-div">
+  <div class="container text-center">
+    <div class="text-center">
+      <h2 class="display-2">Oops...</h2>
+      <hr>
+      <p class="display-5">We've had a small problem: <strong th:text="${message}"></strong></p>
+
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

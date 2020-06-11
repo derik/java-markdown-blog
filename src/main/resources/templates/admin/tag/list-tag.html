@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+<head>
+  <meta name="_csrf_header" th:content="${_csrf.headerName}"/>
+  <meta name="_csrf" th:content="${_csrf.token}"/>
+
+  <title>Tags | DerikLima.com Blog</title>
+</head>
+<body>
+
+<div layout:fragment="main-body">
+  <div class="container">
+    <div class="title">
+      <h2 class="display-4 text-center my-5">Tags</h2>
+    </div>
+    <div class="row">
+      <div class="col-lg-9">
+        <table class="table table-dark" th:fragment="tags-list" id="tags-list-table">
+          <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr th:each="tag : ${tags}">
+            <th scope="row" th:text="${tag.id}">1</th>
+            <td th:text="${tag.name}">Tag Name</td>
+            <td>
+              <a name="edit-tag" class="text-white"><i data-feather="edit"></i></a> |
+              <a name="delete-tag" class="text-white" th:attr="data-tag-id = ${tag.id}"><i
+                  data-feather="trash-2"></i></a>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col-lg-3">
+        <form class="needs-validation" method="POST" id="tag-form" novalidate="novalidate">
+          <div class="form-group">
+            <label for="tagNameInput">Tag Name</label>
+            <input type="text" class="form-control" id="tagNameInput"
+                   aria-describedby="tagNameHelp">
+            <div class="invalid-feedback" th:text="#{tag.save.exists}"></div>
+            <small id="tagNameHelp" class="form-text text-muted">The tag name that will be seen on
+              blog posts.</small>
+          </div>
+          <a id="save-tag" href="#" class="btn btn-primary">Add</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal -->
+  <div class="modal fade" id="deleteExceptionModal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Action Denied</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p th:text="#{tag.delete.tagused}"></p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<th:block layout:fragment="script">
+  <script th:src="@{/js/list-tag.js}"></script>
+</th:block>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html
+    xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+    xmlns:th="http://www.thymeleaf.org"
+    layout:decorate="~{layout}">
+<head>
+<!--  <link rel="stylesheet" crossorigin="anonymous"-->
+<!--        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.2/styles/darcula.min.css"-->
+<!--        integrity="sha256-5BRDJ9LsMByOdNbohiNu+sxguR70wTsnt20w6GAZvlU="/>-->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.2/styles/solarized-dark.min.css"
+        integrity="sha256-piOVUovxzseGND3JabKML1oARsyOc2UngKdAj7vZei4=" crossorigin="anonymous"/>
+
+  <title>DerikLima.com Blog - List Blog Posts</title>
+</head>
+<body>
+
+<div layout:fragment="main-body">
+  <div class="container">
+<!--    <div class="text-center">-->
+<!--      <img class="img-fluid w-50" style="max-height: 12rem;" itemprop="image" alt="Header Image" th:src="@{/imgs/undraw_blog_anyj.svg}">-->
+<!--    </div>-->
+    <h2 class="display-4 text-center my-5">[[${post.getTitle()}]]</h2>
+    <div class="post" th:utext="${postHtml}"></div>
+  </div>
+</div>
+
+<th:block layout:fragment="script">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.0.2/highlight.min.js"
+          fragment="js" integrity="sha256-xBWd+VDTBasaTja2bfaCX4aA2H18UxRsjRFkK3rgfkI="
+          crossorigin="anonymous"></script>
+  <script>
+    hljs.initHighlightingOnLoad();
+  </script>
+</th:block>
+</body>
+</html>

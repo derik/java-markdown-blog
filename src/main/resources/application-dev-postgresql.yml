@@ -1,0 +1,28 @@
+server:
+  error.whitelabel.enabled: false
+
+spring:
+  datasource:
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    hibernate.ddl-auto: none
+    show-sql: true
+    open-in-view: true
+  security:
+    user:
+      name: user
+      password: ${USER_PASSWORD}
+      roles: editor
+  messages:
+    basename: messages/messages
+  thymeleaf:
+    cache: false
+
+social:
+  links:
+    linkedin: https://www.linkedin.com
+    github: https://www.github.com
+    twitter: https://www.twitter.com
