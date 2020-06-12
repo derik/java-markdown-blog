@@ -6,6 +6,18 @@ Java Markdown Blog is a simple blogging platform with [Markdown](https://en.wiki
 
 I plan to create a series of blog posts on [my personal blog](https://deriklima.com) explaining how this project was made.
 
+## I'd like to see it working
+
+[Click Here](https://java-markdown-blog.herokuapp.com/) (Deployed on Heroku).
+
+### Admin area
+
+[Here](https://java-markdown-blog.herokuapp.com/admin) is the admin area where you can manage tags and blog posts.
+
+| Username | Password |
+| -------- | -------- |
+| user     | password |
+
 ## Technologies & Frameworks
 
 * Language: Java 14
