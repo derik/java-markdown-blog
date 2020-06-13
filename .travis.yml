@@ -15,3 +15,6 @@ script:
   - cp .travis.settings.xml $HOME/.m2/settings.xml
   - cat $HOME/.m2/settings.xml
   - mvn deploy
+
+after_success:
+  - bash <(curl -s https://codecov.io/bash)

@@ -1,6 +1,10 @@
 # Java Markdown Blog
 
 [![Build Status](https://travis-ci.com/derik/java-markdown-blog.svg?branch=master)](https://travis-ci.com/derik/java-markdown-blog)
+[![codecov](https://codecov.io/gh/derik/java-markdown-blog/branch/master/graph/badge.svg)](https://codecov.io/gh/derik/java-markdown-blog)
+![Docker Build Status](https://img.shields.io/docker/build/derikjl/java-markdown-blog)
+![Docker Pulls](https://img.shields.io/docker/pulls/derikjl/java-markdown-blog)
+![GitHub](https://img.shields.io/github/license/derik/java-markdown-blog)
 
 ## About
 
