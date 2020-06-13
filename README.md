@@ -1,5 +1,7 @@
 # Java Markdown Blog
 
+[![Build Status](https://travis-ci.com/derik/java-markdown-blog.svg?branch=master)](https://travis-ci.com/derik/java-markdown-blog)
+
 ## About
 
 Java Markdown Blog is a simple blogging platform with [Markdown](https://en.wikipedia.org/wiki/Markdown) support. It's been made just to show the full-stack development possibilities with Java, even though it also makes use of some vanilla JavaScript for a better user experience.
