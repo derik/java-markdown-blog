@@ -1,3 +1,17 @@
 language: java
+
 jdk:
 - openjdk11
+
+services:
+  - docker
+
+before_install:
+  - mvn clean
+  - echo "$DOCKER_PASSWORD" | docker login  -u "$DOCKER_USERNAME" --password-stdin
+  - docker pull openjdk:11-jdk
+
+script:
+  - cp .travis.settings.xml $HOME/.m2/settings.xml
+  - cat $HOME/.m2/settings.xml
+  - mvn deploy
