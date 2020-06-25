@@ -58,7 +58,7 @@
              th:value="${_csrf.token}"/>
       <input type="hidden" name="id" th:field="${post.id}">
       <div class="form-row">
-        <div class="form-group col-md-6">
+        <div class="form-group col-md-9">
           <input
               type="text"
               id="post-title"
@@ -67,10 +67,12 @@
               placeholder="Title"
               autofocus="autofocus"
               th:field="${post.title}">
+        </div>
+        <div class="form-group col-md-3">
           <select
               id="post-status"
               name="status"
-              class="form-control mt-3"
+              class="form-control"
               th:field="${post.status}">
             <option
                 th:each="status : ${statuses}"
@@ -80,8 +82,23 @@
             </option>
           </select>
         </div>
-        <div class="form-group col-md-6">
-          <select class="custom-select" th:multiple="multiple" th:field="${post.tags}">
+      </div>
+
+      <div class="form-row">
+        <div class="form-group col-md-9">
+          <textarea
+              type="text"
+              id="post-description"
+              name="description"
+              class="form-control"
+              rows="2"
+              placeholder="Description"
+              th:field="${post.description}">
+          </textarea>
+        </div>
+
+        <div class="form-group col-md-3">
+          <select class="custom-select" th:multiple="multiple" th:field="${post.tags}" size="3">
             <option
                 th:each="tag : ${tags}"
                 th:value="${tag.id}"
@@ -91,18 +108,6 @@
             </option>
           </select>
         </div>
-      </div>
-
-      <div class="form-group">
-      <textarea
-          type="text"
-          id="post-description"
-          name="description"
-          class="form-control"
-          rows="2"
-          placeholder="Description"
-          th:field="${post.description}">
-      </textarea>
       </div>
       <div class="post-editor form-group">
         <textarea th:field="${post.markdownContent}" id="markdown-editor-area"
