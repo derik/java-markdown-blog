@@ -1,5 +1,11 @@
 package com.deriklima.blog.controller;
 
+import static com.deriklima.blog.controller.ResourcePath.ABOUT_PAGE;
+import static com.deriklima.blog.controller.ResourcePath.BLOG_POST_PAGE;
+import static com.deriklima.blog.controller.ResourcePath.CONTACT_PAGE;
+import static com.deriklima.blog.controller.ResourcePath.INDEX_PAGE;
+import static com.deriklima.blog.controller.ResourcePath.PRIVACY_PAGE;
+
 import com.deriklima.blog.dto.EditBlogPostDTO;
 import com.deriklima.blog.service.BlogPostService;
 import com.deriklima.blog.util.MarkdownParser;
@@ -18,7 +24,7 @@ public class MainController {
   @GetMapping("/")
   public String viewBlogIndex(Model model) {
     model.addAttribute("posts", blogPostService.findAllPublished());
-    return "index";
+    return INDEX_PAGE;
   }
 
   @GetMapping("/blog/{handle}")
@@ -27,22 +33,22 @@ public class MainController {
     model.addAttribute("post", blogPost);
     String htmlContent = MarkdownParser.parseToHtml(blogPost.getMarkdownContent());
     model.addAttribute("postHtml", htmlContent);
-    return "blog/post";
+    return BLOG_POST_PAGE;
   }
 
   @GetMapping("/about")
   public String viewAboutPage() {
-    return "about";
+    return ABOUT_PAGE;
   }
 
   @GetMapping("/contact")
   public String viewContactPage() {
-    return "contact";
+    return CONTACT_PAGE;
   }
 
   @GetMapping("/privacy")
   public String viewPrivacyPage() {
-    return "privacy";
+    return PRIVACY_PAGE;
   }
 
 }

@@ -51,3 +51,8 @@ VALUES ('Blog Post 03',
         '2020-05-13 00:00:00',
         '2020-05-13 00:00:00',
         'DRAFT');
+
+INSERT INTO `tags` (`name`)
+VALUES
+('java'),
+('spring');

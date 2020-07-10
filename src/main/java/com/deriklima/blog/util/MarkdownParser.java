@@ -17,6 +17,9 @@ import java.util.Arrays;
 
 public class MarkdownParser {
 
+  private MarkdownParser() {
+  }
+
   private static MutableDataSet options = configOptions();
 
   private static MutableDataSet configOptions() {

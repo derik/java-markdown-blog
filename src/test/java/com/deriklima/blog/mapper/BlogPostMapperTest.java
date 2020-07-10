@@ -19,7 +19,7 @@ class BlogPostMapperTest {
   private BlogPostMapper blogPostMapper;
 
   @Test
-  public void shouldMapDTOToBlogPost() {
+  void shouldMapDTOToBlogPost() {
     String status = "PUBLISHED";
     String title = "Title";
     String description = "Description";
@@ -44,7 +44,7 @@ class BlogPostMapperTest {
   }
 
   @Test
-  public void shouldMapBlogPostToEditBlogPostDTO() {
+  void shouldMapBlogPostToEditBlogPostDTO() {
     String status = "PUBLISHED";
     String title = "Title";
     String description = "Description";
@@ -52,7 +52,8 @@ class BlogPostMapperTest {
     String markdown = "## markdown";
     String handle = "title";
 
-    BlogPost blogPost = new BlogPost(1L, PostStatus.PUBLISHED, title, handle, description, imgref, markdown,
+    BlogPost blogPost = new BlogPost(1L, PostStatus.PUBLISHED, title, handle, description, imgref,
+        markdown,
         LocalDateTime.now(),
         LocalDateTime.now(), null);
 

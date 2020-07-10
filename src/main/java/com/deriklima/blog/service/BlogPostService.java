@@ -3,9 +3,9 @@ package com.deriklima.blog.service;
 import com.deriklima.blog.dto.AdminPageBlogPostDTO;
 import com.deriklima.blog.dto.EditBlogPostDTO;
 import com.deriklima.blog.dto.MainPageBlogPostDTO;
+import com.deriklima.blog.exception.BlogPostNotFoundException;
 import com.deriklima.blog.mapper.BlogPostMapper;
 import com.deriklima.blog.mapper.TagMapper;
-import com.deriklima.blog.exception.BlogPostNotFoundException;
 import com.deriklima.blog.model.BlogPost;
 import com.deriklima.blog.model.PostStatus;
 import com.deriklima.blog.repository.BlogPostRepository;
@@ -90,7 +90,7 @@ public class BlogPostService {
   private String getHandle(String title) {
     return title == null ?
         null :
-        title.toLowerCase().replaceAll(" ", "-");
+        title.toLowerCase().replace(" ", "-");
   }
 
 }

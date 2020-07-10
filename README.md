@@ -1,7 +1,6 @@
 # Java Markdown Blog
 
 [![Build Status](https://travis-ci.com/derik/java-markdown-blog.svg?branch=master)](https://travis-ci.com/derik/java-markdown-blog)
-[![codecov](https://codecov.io/gh/derik/java-markdown-blog/branch/master/graph/badge.svg)](https://codecov.io/gh/derik/java-markdown-blog)
 [![Quality Gate](https://sonarcloud.io/api/project_badges/measure?project=com.deriklima:java-markdown-blog&metric=alert_status)](https://sonarcloud.io/dashboard/index/com.deriklima:java-markdown-blog)
 ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/derikjl/java-markdown-blog)
 ![Docker Pulls](https://img.shields.io/docker/pulls/derikjl/java-markdown-blog)

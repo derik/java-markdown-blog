@@ -1,13 +1,14 @@
 package com.deriklima.blog.controller;
 
+import static com.deriklima.blog.controller.ResourcePath.ADMIN_TAG_LIST_PAGE;
+import static com.deriklima.blog.controller.ResourcePath.ADMIN_TAG_PATH;
+
 import com.deriklima.blog.dto.TagDTO;
 import com.deriklima.blog.exception.ErrorResponse;
 import com.deriklima.blog.service.TagService;
-import java.sql.SQLIntegrityConstraintViolationException;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.apache.commons.lang3.exception.ExceptionUtils;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +24,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-@RequestMapping("/admin/tag")
+@RequestMapping(ADMIN_TAG_PATH)
 @RequiredArgsConstructor
 public class TagController {
+
+  public static final String TAG_LIST_VIEW_PAGE = "admin/tag/list-tag :: tags-list";
 
   private final TagService tagService;
 
@@ -33,7 +36,7 @@ public class TagController {
   public String viewTagList(Model model) {
     model.addAttribute("tags", tagService.findAll());
     model.addAttribute("newTag", new TagDTO());
-    return "admin/tag/list-tag";
+    return ADMIN_TAG_LIST_PAGE;
   }
 
   @PostMapping
@@ -41,7 +44,7 @@ public class TagController {
       @Valid @RequestBody TagDTO tagDTO) {
     tagService.save(tagDTO);
     return new ModelAndView(
-        "admin/tag/list-tag :: tags-list",
+        TAG_LIST_VIEW_PAGE,
         "tags",
         tagService.findAll()
     );
@@ -51,7 +54,7 @@ public class TagController {
   public ModelAndView deleteTag(@PathVariable("id") Long id) {
     tagService.deleteById(id);
     return new ModelAndView(
-        "admin/tag/list-tag :: tags-list",
+        TAG_LIST_VIEW_PAGE,
         "tags",
         tagService.findAll()
     );

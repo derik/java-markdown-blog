@@ -1,5 +1,9 @@
 package com.deriklima.blog.controller;
 
+import static com.deriklima.blog.controller.ResourcePath.ADMIN_BLOG_EDIT_POST_PAGE;
+import static com.deriklima.blog.controller.ResourcePath.ADMIN_BLOG_LIST_POSTS_PAGE;
+import static com.deriklima.blog.controller.ResourcePath.ADMIN_BLOG_PATH;
+
 import com.deriklima.blog.dto.EditBlogPostDTO;
 import com.deriklima.blog.dto.TagDTO;
 import com.deriklima.blog.model.PostStatus;
@@ -23,7 +27,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
-@RequestMapping("/admin/blog")
+@RequestMapping(ADMIN_BLOG_PATH)
 @RequiredArgsConstructor
 public class BlogController {
 
@@ -38,12 +42,12 @@ public class BlogController {
   @GetMapping("/list")
   public String viewBlogPosts(Model model) {
     model.addAttribute("posts", blogPostService.findAll());
-    return "admin/blog/list-posts";
+    return ADMIN_BLOG_LIST_POSTS_PAGE;
   }
 
   @GetMapping("/new")
   public String addBlogPost(@ModelAttribute("post") EditBlogPostDTO post) {
-    return "admin/blog/edit-post";
+    return ADMIN_BLOG_EDIT_POST_PAGE;
   }
 
   @PostMapping("/new")
@@ -52,7 +56,7 @@ public class BlogController {
       BindingResult result,
       RedirectAttributes attr) {
     if (result.hasErrors()) {
-      return "admin/blog/edit-post";
+      return ADMIN_BLOG_EDIT_POST_PAGE;
     }
     EditBlogPostDTO savedBlogPost = blogPostService.save(post);
 
@@ -65,7 +69,7 @@ public class BlogController {
   public String editBlogPost(@PathVariable("blogPostId") Long blogPostId, Model model) {
     EditBlogPostDTO post = blogPostService.findById(blogPostId);
     model.addAttribute("post", post);
-    return "admin/blog/edit-post";
+    return ADMIN_BLOG_EDIT_POST_PAGE;
   }
 
   @PostMapping("/{blogPostId}/edit")
@@ -76,7 +80,7 @@ public class BlogController {
       RedirectAttributes attr) {
 
     if (result.hasErrors()) {
-      return "admin/blog/edit-post";
+      return ADMIN_BLOG_EDIT_POST_PAGE;
     }
 
     editBlogPostDTO.setId(blogPostId);
