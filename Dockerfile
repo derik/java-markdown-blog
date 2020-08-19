@@ -1,17 +1,18 @@
-FROM openjdk:11-jdk
+FROM openjdk:14 as builder
+WORKDIR application
+COPY ./pom.xml ./pom.xml
+COPY mvnw .
+COPY .mvn .mvn
+COPY ./src ./src
+RUN ["chmod", "+x", "mvnw"]
+RUN ./mvnw dependency:go-offline -B
+RUN ./mvnw clean package && cp target/java-markdown-blog*.jar app.jar
+RUN java -Djarmode=layertools -jar app.jar extract
 
-LABEL maintainer="me@deriklima.com"
-
-RUN groupadd -r user_group && useradd -r -g user_group user
-
-USER user:user_group
-
-ENV spring.profiles.active=dev
-
-VOLUME /tmp
-
-EXPOSE 8080
-
-ADD ${JAR_FILE} app.jar
-
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+FROM openjdk:14-slim
+WORKDIR application
+COPY --from=builder application/dependencies/ ./
+COPY --from=builder application/spring-boot-loader/ ./
+COPY --from=builder application/snapshot-dependencies/ ./
+COPY --from=builder application/application/ ./
+ENTRYPOINT ["java", "--enable-preview", "org.springframework.boot.loader.JarLauncher"]
