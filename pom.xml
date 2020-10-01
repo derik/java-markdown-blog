@@ -156,7 +156,7 @@
         <version>3.8.1</version>
         <configuration>
           <release>${java.version}</release>
-          <compilerArgs>--enable-preview</compilerArgs>
+<!--          <compilerArgs>&#45;&#45;enable-preview</compilerArgs>-->
           <annotationProcessorPaths>
             <path>
               <groupId>org.mapstruct</groupId>
@@ -169,6 +169,8 @@
               <version>1.18.12</version>
             </path>
           </annotationProcessorPaths>
+          <source>14</source>
+          <target>14</target>
         </configuration>
       </plugin>
 
@@ -177,7 +179,7 @@
         <artifactId>maven-surefire-plugin</artifactId>
         <version>3.0.0-M3</version>
         <configuration>
-          <argLine>--enable-preview</argLine>
+<!--          <argLine>&#45;&#45;enable-preview</argLine>-->
         </configuration>
       </plugin>
 
