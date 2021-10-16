@@ -78,6 +78,7 @@ public class BlogPost {
   @Column(name = "updated_at")
   private LocalDateTime updatedAt;
 
+  @ToString.Exclude
   @ManyToMany(fetch = FetchType.LAZY)
   @JoinTable(name = "blog_posts_tags",
       joinColumns = @JoinColumn(name = "blog_post_id"),
