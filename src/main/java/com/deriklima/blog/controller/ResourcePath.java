@@ -6,7 +6,7 @@ public class ResourcePath {
   }
 
   // Paths
-  public static final String ADMIN = "/admin";
+  public static final String ADMIN = "admin";
   public static final String ADMIN_BLOG_PATH = ADMIN + "/blog";
   public static final String ADMIN_TAG_PATH = ADMIN + "/tag";
 
